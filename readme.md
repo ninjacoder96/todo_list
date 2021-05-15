@@ -9,12 +9,17 @@ CRUD functionality using OOP concepts and Design Patterns
 </ul>
 
 <h2>Dependendies</h2>
-Twig 3.^
-php ^7.3
+Twig 3.^\
+php ^7.3\
 
 <h2>Features</h2>
-CRUD List
-Advance Pagination
+CRUD List\ (CRUD in Progress)
+Advance Pagination\
+
+<h2>Design Patterns </h2>
+Adapter 
+Factory Design - in Progress
+
 
 
 
