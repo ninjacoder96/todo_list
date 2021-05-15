@@ -14,7 +14,7 @@ php ^7.3\<br/>
 
 <h2>Features</h2>
 CRUD List (CRUD in Progress)<br/>
-Advance Pagination\
+Advance Pagination<br/>
 Fetch API 
 
 <h2>Design Patterns </h2>
