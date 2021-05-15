@@ -10,7 +10,7 @@ CRUD functionality using OOP concepts and Design Patterns
 
 <h2>Dependendies</h2>
 Twig 3.^<br/>
-php ^7.3\<br/>
+php ^7.3<br/>
 
 <h2>Features</h2>
 CRUD List (CRUD in Progress)<br/>
