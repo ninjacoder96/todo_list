@@ -1,5 +1,5 @@
 # <h1>TODO LIST</h1>
-CRUD functionality using OOP concepts and Design Patterns
+TODO LIST CRUD 
 
 <h2> Intallation </h2>
 <ul>
