@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>Tasks</h1>
+        <table class="mb-2">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th rowspan="2">Actions</th>
+            </tr>
+            <tbody>
+                {% for key,value in data %}
+                <tr>
+                    <td>{{ value.id }}</td>
+                    <td>{{ value.title }}</td>
+                    <td>{{ value.description }}</td>
+                    <td>{{ value.created_at }}</td>
+                    <td>{{ value.updated_at }}</td>
+                    <td>
+                        <a>EDIT</a>
+                        <a>DELETE</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% include "pagination.twig"  %}
+</div>

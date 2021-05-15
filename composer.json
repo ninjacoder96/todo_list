@@ -1,0 +1,14 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "php",
+        "To do list"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.3",
+        "twig/twig": "^3.0"
+    }
+}
