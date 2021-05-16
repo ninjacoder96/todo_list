@@ -67,7 +67,7 @@
                 let successEl = document.createElement('p');
                 successEl.className = 'success';
                 successEl.textContent = res.msg;
-                
+
                 var msgEl = document.getElementById("message");
                 msgEl.appendChild(successEl);
                 setTimeout(() =>{ 
@@ -76,7 +76,7 @@
                 , 3000);
                 document.getElementById("addTask").reset();
             }
-        }).catch(error => alert(error.message));
+        }).catch(error => console.log(error.message));
     }
 </script>
 <?php 
