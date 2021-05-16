@@ -1,4 +1,5 @@
 <?php
+namespace Controllers;
 
 include "./../Db/Config.php";
 include "./../Db/Factory.php";
@@ -22,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $title = (!empty($data["title"])) ? filter_var($data["title"], FILTER_SANITIZE_STRING) : $errors[] = "title is required!";
         $desc = (!empty($data["desc"])) ? filter_var($data["desc"], FILTER_SANITIZE_STRING) : $errors[] = "Description is required!";
-        
+
         if (sizeof($errors) == 0) {
             $sql = $db->insert("INSERT INTO tasks(title,description,created_at,updated_at) VALUES(:column1,:column2,:column3,:column4)", [
                 'column1' => $title,
