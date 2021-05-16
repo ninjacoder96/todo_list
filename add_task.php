@@ -19,6 +19,7 @@
 <script>
     async function addTask(e){
         e.preventDefault();
+        document.getElementById('message').innerHTML = '';
         let erListExist = document.querySelector('.errorList');
         if(erListExist){
             erListExist.remove();
@@ -46,7 +47,6 @@
         };
         const _options = { method: 'POST', headers: _headers, body: JSON.stringify(_body) };
         await fetch(_url, _options).then((response) => {
-            document.getElementById("addTask").reset();
             return response.json();
         }).then((res) => {
             spinner.classList.remove('loading');
@@ -63,6 +63,13 @@
                     erList.appendChild(li);
                 }
                 document.getElementById("message").append(erList);
+            }else{
+                document.getElementById("message").textContent = res.msg;
+                setTimeout(function(){ 
+                    document.getElementById("message").textContent = '';
+                }
+                , 3000);
+                document.getElementById("addTask").reset();
             }
         }).catch(error => alert(error.message));
     }
