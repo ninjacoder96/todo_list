@@ -121,6 +121,9 @@ input[type=text] {
 }
 
 /* MISC */
+.success{
+    color:#4BB543;
+}
 .errorList{
     list-style-type:none;
     background:	#DC143C;

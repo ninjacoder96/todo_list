@@ -64,8 +64,13 @@
                 }
                 document.getElementById("message").append(erList);
             }else{
-                document.getElementById("message").textContent = res.msg;
-                setTimeout(function(){ 
+                let successEl = document.createElement('p');
+                successEl.className = 'success';
+                successEl.textContent = res.msg;
+                
+                var msgEl = document.getElementById("message");
+                msgEl.appendChild(successEl);
+                setTimeout(() =>{ 
                     document.getElementById("message").textContent = '';
                 }
                 , 3000);
