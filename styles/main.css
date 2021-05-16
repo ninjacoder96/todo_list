@@ -110,7 +110,7 @@ input[type=text] {
 }
 
 .pagination a.active {
-    background-color: #4CAF50;
+    background-color: #3F7FBF;
     color: white;
     border-radius: 5px;
 }
