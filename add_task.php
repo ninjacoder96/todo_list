@@ -64,7 +64,6 @@
                 }
                 document.getElementById("message").append(erList);
             }
-            // document.getElementById("message").textContent = res.msg;
         }).catch(error => alert(error.message));
     }
 </script>
