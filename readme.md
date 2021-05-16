@@ -18,10 +18,6 @@ CRUD List (CRUD in Progress)<br/>
 Advance Pagination<br/>
 Fetch API 
 
-<h2>Design Patterns </h2>
-Adapter<br/>
-Factory Design - in Progress
-
 
 
 
