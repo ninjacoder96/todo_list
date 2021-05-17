@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Tasks</h1>
-        <table class="mb-2">
+        <table class="mb-2 list_table">
             <tr>
                 <th>Id</th>
                 <th>Title</th>
@@ -18,8 +18,8 @@
                     <td>{{ value.created_at }}</td>
                     <td>{{ value.updated_at }}</td>
                     <td>
-                        <a>EDIT</a>
-                        <a>DELETE</a>
+                        <button class="action-btn edit_button" data-id={{value.id}}>EDIT</button>
+                        <button class="action-btn delete_button"  data-id={{value.id}}>DELETE</button>
                     </td>
                 </tr>
                 {% endfor %}

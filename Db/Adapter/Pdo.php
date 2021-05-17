@@ -1,4 +1,8 @@
 <?php 
+/*
+ * @author Joshua De Guzman
+ * @licence MIT 
+ */
 namespace Db\Adapter;
 
 use Db\Config;
@@ -30,6 +34,18 @@ class Pdo implements AdapterInterface
     }
 
     public function insert($sql, $parameters = []){
+        $sth = $this->_dbh->prepare($sql);
+        $sth->execute($parameters);
+        return $sth;
+    }
+
+    public function find($sql, $parameters = []){
+        $sth = $this->_dbh->prepare($sql);
+        $sth->execute($parameters);
+        return $sth->fetch();
+    }
+
+    public function update($sql,$parameters = []){
         $sth = $this->_dbh->prepare($sql);
         $sth->execute($parameters);
         return $sth;
