@@ -167,7 +167,7 @@ input[type=text] {
 }
 
 .pagination a.active {
-    background-color: #3F7FBF;
+    background-color: #3498db;
     color: white;
     border-radius: 5px;
 }

@@ -26,8 +26,20 @@
             {% endblock %}
         </div>
     </div>
+    <div class="fixed-footer">
+        <div class="container">
+            <p>Copyright Joshua De Guzman ©<span id='dateToday'></span></p>
+        </div>
+    </div>
     {% block scripts %}
-        
+        <script>
+            window.onload = function() {
+                var month = new Array("January", "February", "March", "April", "May", "June", "July",    "August", "September", "October", "November", "December");
+                var today = new Date();
+                var yyyy = today.getFullYear();
+                document.getElementById('dateToday').innerHTML = " " + yyyy;
+            }
+        </script>
     {% endblock %}
 </body>
 
