@@ -9,7 +9,7 @@ TODO LIST CRUD
 <li>Under Db, open the Config.php and edit the database config based on your config. You can test the adapter by changing the <Code>Pdo</Code> to <code>Mysqli</code></li>
 </ul>
 
-<h2>Dependendies</h2>
+<h2>Languages</h2>
 Twig 3.^<br/>
 php ^7.3<br/>
 
