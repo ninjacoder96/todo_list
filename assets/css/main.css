@@ -38,7 +38,6 @@ nav a {
 table, tr {border:hidden;}
 td, th {border:hidden;}
 table {
-    border: none;
     width: 100%;
     margin:0;
     padding:0;
@@ -47,7 +46,6 @@ table {
 }
 
 table tr {
-    border: 1px solid #ddd;
     padding: 5px;
 }
 
@@ -391,12 +389,9 @@ input[type=text] {
 @media screen and (max-width: 600px) {
 
     table {
-        border: 1px solid #ccc;
         width: 100%;
         margin:0;
         padding:0;
-        border-collapse: collapse;
-        border-spacing: 0;
     }
 
     table caption {
@@ -404,7 +399,6 @@ input[type=text] {
     }
 
     table thead {
-        border: none;
         clip: rect(0 0 0 0);
         height: 1px;
         margin: -1px;
