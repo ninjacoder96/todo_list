@@ -28,9 +28,12 @@ class Mysqli implements AdapterInterface
      */
     public function fetchAll(int $start,int $limit) : array
     {
-        $sql = "SELECT * FROM tasks order BY ID DESC limit $start,$limit";
-        $result = $this->_mysqli->query($sql);
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $sql = "SELECT * FROM tasks order BY ID DESC limit ?,?";
+        $sth = $this->_mysqli->prepare($sql);
+        $sth->bind_param('ii',$start,$limit);
+        $sth->execute();
+        $res = $sth->get_result();
+        return $res->fetch_all(MYSQLI_ASSOC);
     }
       /**
      * @return string
