@@ -19,8 +19,8 @@
                     <td>{{ value.id }}</td>
                     <td>{{ value.title }}</td>
                     <td>{{ value.description }}</td>
-                    <td>{{ value.created_at }}</td>
-                    <td>{{ value.updated_at }}</td>
+                    <td>{{ value.created_at|date('Y-m-d h:i:s a') }}</td>
+                    <td>{{ value.updated_at|date('Y-m-d h:i:s a') }}</td>
                     <td>
                         <button class="action-btn edit_button" data-id={{value.id}}>EDIT</button>
                         <button class="action-btn delete_button"  data-id={{value.id}}>DELETE</button>

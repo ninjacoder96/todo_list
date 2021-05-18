@@ -2,6 +2,8 @@
 <script>
     var deleteModal = document.getElementById("deleteModal");
     var delete_task_btn = document.querySelector(".delete_task_btn");
+
+    //attach listeners for delete btn and cancel button
     const deleteBtnListener           = document.querySelectorAll('.delete_button');
     const cancelBtnListener           = document.querySelectorAll('.cancel_button');
 
@@ -21,10 +23,12 @@
         var action          = 'delete_task';
 
         var cancelBtn   = document.getElementById('cancel_btn');
-
+        
+        //show spiiner 
         var spinner = document.getElementById('spinner_loader');
         spinner.classList.add("loading","block-center");
 
+        //hide cancel button
         event.target.style.display = 'none';
         cancelBtn.style.display = 'none';
 
@@ -44,6 +48,7 @@
         fetch(_url, _options).then((response) => {
             return response.json();
         }).then((res) => {
+            //remove spinners 
             spinner.classList.remove("loading","block-center");
             deleteModal.style.display = "none";
 
@@ -59,6 +64,7 @@
 
     });
 
+    //event listener for cancel btn 
     cancelBtnListener.forEach(el => el.addEventListener('click', event => {
          deleteModal.style.display = "none";
     }))

@@ -5,7 +5,7 @@
     var span = document.getElementsByClassName("close")[0];
 
     const editBtnListener           = document.querySelectorAll('.edit_button');
-
+    //add event listener to each btn
     editBtnListener.forEach(el => el.addEventListener('click', event => {
         editModal.style.display = "block";
         
@@ -32,7 +32,7 @@
         fetch(_url, _options).then((response) => {
             return response.json();
         }).then((response) =>{
-            
+
             document.getElementById('title').value          = response.data.title;
             document.getElementById('description').value    = response.data.description;
             document.getElementById('id').value             = response.data.id;
@@ -42,6 +42,8 @@
 
     
     var form = document.getElementById("actionListForm");
+
+    //add event listener when submitting form
 
     form.addEventListener('submit', async(e) => handleForm(e));
 
@@ -55,15 +57,18 @@
         }
         
         if(document.getElementById('action').value == 'update_task'){
-            
+            //hide update btn
             var update_btn  = document.getElementById('update_btn');
             update_btn.style.display = 'none';
+            //show spinner
             var spinner = document.querySelector('.spinner');
             spinner.classList.add('loading');
+
             let id              =   document.getElementById('id').value;
             let title           =   document.getElementById('title').value;
             let desc            =   document.getElementById('description').value;
             let action          =   document.getElementById('action').value;
+
             const _url = 'Controllers/TodoList.php';
             let _body = {
                 id: id,
@@ -76,14 +81,16 @@
             };
             const _options = { method: 'POST', headers: _headers, body: JSON.stringify(_body) };
 
-
             await fetch(_url, _options).then((response) => {
                 return response.json();
             }).then((res) => {
+                // remove spinner
                 spinner.classList.remove('loading');
                 update_btn.style.display = 'block';
 
                 if(res.status == 'failed'){
+
+                    //get error message and append to erMessage Element
                     var erList = document.createElement("ul");
                     erList.className = 'errorList';
                     document.body.appendChild(erList);
@@ -95,6 +102,8 @@
                     }
                     document.getElementById("message").append(erList);
                 }else{
+
+                    //Display success status to modal then refresh after 3 secs
                     let successEl = document.createElement('p');
                     successEl.className = 'success';
                     successEl.textContent = res.msg;
@@ -106,12 +115,19 @@
                     }
                     , 3000);
                     }
-            });
+
+                     let str = window.location.href;
+                    let lastSegment = str.replace(/.*\/(\w+)\/?$/, '$1');
+
+                    setTimeout(() =>{
+                        window.location.href = lastSegment;
+                    },1000)
+                });
 
         }
     } 
 
-
+    //if user click outside modal
     window.onclick = function (event) {
         if (event.target == editModal) {
             editModal.style.display = "none";
@@ -121,7 +137,7 @@
             }
         }
     }
-
+    //if user click x button in modal
     span.onclick = function () {
         editModal.style.display = "none";
         let erListExist = document.querySelector('.errorList');
