@@ -7,6 +7,7 @@ namespace Db\Adapter;
 
 use Db\Config;
 
+
 class Mysqli implements AdapterInterface
 {
     private $_mysqli;
@@ -17,23 +18,51 @@ class Mysqli implements AdapterInterface
             , $config->dbname);
     }
     
-    public function fetchAll($sql)
+    public function fetchAll($start,$limit) : array
     {
+        $sql = "SELECT * FROM tasks order BY ID DESC limit $start,$limit";
         $result = $this->_mysqli->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function count($sql){
-        $sth = $this->_mysqli->query($sql);
-        $sth->execute();
-        return $sth>fetch_row();
+    public function count(){
+        $sql = $this->_mysqli->query("SELECT count(*) from tasks");
+        $res = $sql->fetch_row();
+        return $res[0];
     }
 
     
-    public function insert($sql, $parameters = []){
-        $sth = $this->_dbh->query($sql);
-        $sth->execute($parameters);
+    public function insert($sql, $parameters = []) : object
+    {
+        $sth = $this->_mysqli->query($sql);
+        $sth->bind_param($parameters);
+        $sth->execute();
         return $sth;
     }
+
+    public function find($sql, $parameters = []): array
+    {
+        $sth = $this->_mysqli->prepare($sql);
+        $sth->bind_param($parameters);
+        $sth->execute();
+        return $sth;
+    }
+
+    public function update($sql,$parameters = []) : object
+    {
+        $sth = $this->_mysqli->prepare($sql);
+        $sth->bind_param($parameters);
+        $sth->execute();
+        return $sth;
+    }
+
+    public function delete($sql,$parameters = []): object
+    {   
+        $sth = $this->_mysqli->prepare($sql);
+        $sth->bind_param($parameters);
+        $sth->execute();
+        return $sth;
+    }
+
     
 }

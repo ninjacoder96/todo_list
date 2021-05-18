@@ -49,11 +49,12 @@
 
             let str = window.location.href;
             let lastSegment = str.replace(/.*\/(\w+)\/?$/, '$1');
-            window.location.href = lastSegment;
+            alert(res.msg);
 
-            setTimeout(() =>{ 
-                alert(res.msg);
-            },1000);
+            setTimeout(() =>{
+                window.location.href = lastSegment;
+            },1000)
+
         });
 
     });

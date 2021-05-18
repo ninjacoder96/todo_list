@@ -2,6 +2,7 @@
     include "./Db/Config.php";
     include "./Db/Factory.php";
     include "./Db/Adapter/AdapterInterface.php";
+    include "./Db/Adapter/Mysql.php";
     include "./Db/Adapter/Pdo.php";
     include "./Utils/paginate.php";
     require 'vendor/autoload.php';
@@ -15,8 +16,7 @@
     $db =  \Db\Factory::connect($config);
 
 
-    $count = $db->count("SELECT COUNT(*) FROM tasks");
-
+    $count = $db->count();
 
     $users = $db->fetchAll($startAt,$perPage);
 

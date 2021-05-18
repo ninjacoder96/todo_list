@@ -26,9 +26,9 @@ class Pdo implements AdapterInterface
         return $sth->fetchAll();
     }
 
-    public function count($sql) : string
+    public function count() : string
     {
-        $sth = $this->_dbh->prepare($sql);
+        $sth = $this->_dbh->prepare("SELECT count(*) from tasks");
         $sth->execute();
         return $sth->fetchColumn();
     }
@@ -47,14 +47,14 @@ class Pdo implements AdapterInterface
         return $sth->fetch();
     }
 
-    public function update($sql,$parameters = [])
+    public function update($sql,$parameters = []) : object
     {
         $sth = $this->_dbh->prepare($sql);
         $sth->execute($parameters);
         return $sth;
     }
 
-    public function delete($sql,$parameters = [])
+    public function delete($sql,$parameters = []): object
     {   
         $sth = $this->_dbh->prepare($sql);
         $sth->execute($parameters);
