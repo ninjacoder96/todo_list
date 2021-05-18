@@ -38,34 +38,27 @@ nav a {
 
 table {
     border: 1px solid #ccc;
-    border-collapse: collapse;
-    margin: 0;
-    padding: 0;
     width: 100%;
-    table-layout: fixed;
-}
-
-table caption {
-    font-size: 1.5em;
-    margin: .5em 0 .75em;
+    margin:0;
+    padding:0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 table tr {
-    background-color: #f8f8f8;
     border: 1px solid #ddd;
-    padding: .35em;
+    padding: 5px;
 }
 
-table th,
-table td {
-    padding: .625em;
+table th, table td {
+    padding: 10px;
     text-align: center;
 }
 
 table th {
-    font-size: .85em;
-    letter-spacing: .1em;
     text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
 td {
@@ -215,31 +208,6 @@ input[type=text] {
     text-align: center;
 }
 
-/* Add Animation */
-@-webkit-keyframes animatetop {
-    from {
-        top: -300px;
-        opacity: 0
-    }
-
-    to {
-        top: 0;
-        opacity: 1
-    }
-}
-
-@keyframes animatetop {
-    from {
-        top: -300px;
-        opacity: 0
-    }
-
-    to {
-        top: 0;
-        opacity: 1
-    }
-}
-
 /* The Close Button */
 .close {
     color: black;
@@ -320,6 +288,44 @@ input[type=text] {
     animation: spin 1s infinite ease-in;
 }
 
+/* key frames */
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -344,6 +350,10 @@ input[type=text] {
     }
     .card{
         width:100%;
+        background: linear-gradient(-45deg,#23a6d5, #23d5ab) !important;
+        animation: gradient 2s ease infinite;
+        color:white;
+
     }
     .content{
         margin-top: 20px;
@@ -371,13 +381,21 @@ input[type=text] {
     .modal_delete_content{
         width:100%;
     }
+    .pagination{
+        margin-top: 20px;
+    }
 }
 
 
 @media screen and (max-width: 600px) {
 
     table {
-        border: 0;
+        border: 1px solid #ccc;
+        width: 100%;
+        margin:0;
+        padding:0;
+        border-collapse: collapse;
+        border-spacing: 0;
     }
 
     table caption {
