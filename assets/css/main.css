@@ -35,12 +35,21 @@ nav a {
     padding: 7px 25px;
     display: inline-block;
 }
-table, tr {border:hidden;}
-td, th {border:hidden;}
+
+table,
+tr {
+    border: hidden;
+}
+
+td,
+th {
+    border: hidden;
+}
+
 table {
     width: 100%;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     border-collapse: collapse;
     border-spacing: 0;
 }
@@ -49,7 +58,8 @@ table tr {
     padding: 5px;
 }
 
-table th, table td {
+table th,
+table td {
     padding: 10px;
     text-align: center;
 }
@@ -66,18 +76,18 @@ td {
 
 /* Cards */
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     width: 40%;
     border-radius: 5px;
 }
-  
+
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.card_mobile{
-    display:none;
+.card_mobile {
+    display: none;
 }
 
 /* Inputs */
@@ -100,10 +110,10 @@ input[type=text] {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.cancel_button{
+.cancel_button {
     background-color: #3F7FBF;
     border: none;
     color: white;
@@ -111,7 +121,7 @@ input[type=text] {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .edit_button {
@@ -122,10 +132,11 @@ input[type=text] {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.delete_button,.delete_task_btn{
+.delete_button,
+.delete_task_btn {
     background-color: #e74c3c;
     border: none;
     color: white;
@@ -134,7 +145,7 @@ input[type=text] {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 
@@ -167,8 +178,8 @@ input[type=text] {
 }
 
 /* Modal */
-#modal_header_title{
-    color:black;
+#modal_header_title {
+    color: black;
 }
 
 .modal {
@@ -202,8 +213,8 @@ input[type=text] {
     animation-duration: 0.4s
 }
 
-.modal_delete_content{
-    width:40%;
+.modal_delete_content {
+    width: 40%;
     text-align: center;
 }
 
@@ -239,22 +250,27 @@ input[type=text] {
 }
 
 /* MISC */
-.text-red{
-    color:red;
+.text-red {
+    color: red;
 }
-.text-black{
-    color:black;
+
+.text-black {
+    color: black;
 }
-.text-left{
+
+.text-left {
     text-align: left !important;
 }
-.text-center{
+
+.text-center {
     text-align: center !important;
 }
-.block-center{
+
+.block-center {
     display: block;
-    margin:0 auto;
+    margin: 0 auto;
 }
+
 .success {
     color: #4BB543;
 }
@@ -313,16 +329,19 @@ input[type=text] {
         opacity: 1
     }
 }
+
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 @keyframes spin {
@@ -337,61 +356,10 @@ input[type=text] {
 
 /* Media Queries */
 @media only screen and (max-width: 600px) {
-      /* Styles */
-    .container{
-        word-break: break-word;
-    }
-    .list_table{
-        display:none;
-    }
-    .card_mobile{
-        display: block;
-    }
-    .card{
-        width:100%;
-        background: linear-gradient(-45deg,#23a6d5, #23d5ab) !important;
-        animation: gradient 2s ease infinite;
-        color:white;
-
-    }
-    .content{
-        margin-top: 20px;
-    }
-    .card_actions{
-        text-align: center;
-    }
-    .card_actions > span{
-        display: inline-block;
-        margin: 20px auto;
-        vertical-align:middle; 
-    }
-    .card_task_title{
-        font-size: 30px;
-        text-align: center;
-    }
-    .card_task_desc{
-        font-size:16px;
-        text-align: center;
-    }
-    .delete_button,.edit_button{
-        margin-bottom: 5px;
-        word-wrap: break-word;
-    }
-    .modal_delete_content{
-        width:100%;
-    }
-    .pagination{
-        margin-top: 20px;
-    }
-}
-
-
-@media screen and (max-width: 600px) {
-
     table {
         width: 100%;
-        margin:0;
-        padding:0;
+        margin: 0;
+        padding: 0;
     }
 
     table caption {
@@ -430,5 +398,63 @@ input[type=text] {
 
     table td:last-child {
         border-bottom: 0;
+    }
+
+    .container {
+        word-break: break-word;
+    }
+
+    .list_table {
+        display: none;
+    }
+
+    .card_mobile {
+        display: block;
+    }
+
+    .card {
+        width: 100%;
+        background: linear-gradient(-45deg, #23a6d5, #23d5ab) !important;
+        animation: gradient 2s ease infinite;
+        color: white;
+
+    }
+
+    .content {
+        margin-top: 20px;
+    }
+
+    .card_actions {
+        text-align: center;
+    }
+
+    .card_actions>span {
+        display: inline-block;
+        margin: 20px auto;
+        vertical-align: middle;
+    }
+
+    .card_task_title {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .card_task_desc {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .delete_button,
+    .edit_button {
+        margin-bottom: 5px;
+        word-wrap: break-word;
+    }
+
+    .modal_delete_content {
+        width: 100%;
+    }
+
+    .pagination {
+        margin-top: 20px;
     }
 }
