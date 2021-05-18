@@ -35,9 +35,10 @@ nav a {
     padding: 7px 25px;
     display: inline-block;
 }
-
+table, tr {border:hidden;}
+td, th {border:hidden;}
 table {
-    border: 1px solid #ccc;
+    border: none;
     width: 100%;
     margin:0;
     padding:0;
