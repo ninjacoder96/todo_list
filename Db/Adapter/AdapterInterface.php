@@ -12,11 +12,12 @@ use Db\Config;
 interface AdapterInterface
 {
     public function connect(Config $config);
-    public function fetchAll($start,$limit);
+    public function fetchAll(int $start,int $limit);
     public function count();
-    public function insert($sql,$parameters);
-    public function find($sql,$parameters);
-    public function delete($sql,$parameters);
+    public function insert(array $parameters);
+    public function find(array $parameters);
+    public function update(array $parameters);
+    public function delete(array $parameters);
 }
 
 ?>

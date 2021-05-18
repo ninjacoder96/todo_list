@@ -6,7 +6,7 @@ namespace Db;
  */
 class Config
 {
-    public $driver = 'Pdo';
+    public $driver = 'Mysqli';
     public $host = 'localhost';
     public $user = 'root';
     public $password = '';

@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "joshua/todolist",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "CRUD For todo list",
     "keywords": [
         "php",
         "To do list"
