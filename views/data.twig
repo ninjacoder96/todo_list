@@ -1,4 +1,8 @@
-<div class="container">
+{% extends "./layouts/base.twig" %}
+{% block title %}
+    Todo List 
+{% endblock %}
+{% block content  %}
     <h1>Tasks</h1>
         <table class="mb-2 list_table">
             <tr>
@@ -25,5 +29,22 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div class="card_mobile">
+            {% for key,value in data %}
+                <div class="card">
+                    <div class="container">
+                        <p class="card_task_title">{{ value.title }}</p>
+                        <p class="card_task_desc">{{ value.description }}</p>
+                    </div>
+                     <div class="card_actions">
+                        <span class="action-btn edit_button" data-id={{value.id}}>EDIT</span>
+                        <span class="action-btn delete_button" data-id={{value.id}}>DELETE</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     {% include "pagination.twig"  %}
-</div>
+
+    {% include "list_scripts.twig" %}
+
+{% endblock %}

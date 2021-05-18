@@ -1,0 +1,132 @@
+
+{% block scripts %}
+<script>
+    var editModal = document.getElementById("editModal");
+    var span = document.getElementsByClassName("close")[0];
+
+    const editBtnListener           = document.querySelectorAll('.edit_button');
+
+    editBtnListener.forEach(el => el.addEventListener('click', event => {
+        editModal.style.display = "block";
+        
+        document.getElementById('modal_header_title').innerHTML = 'Edit Record';
+
+        if(!document.getElementById("update_btn")){
+            var editBtn = document.getElementById('submit_btn').id = 'update_btn';
+            document.getElementById('update_btn').value = 'UPDATE';
+        }
+        
+        var action = document.getElementById('action').value = 'find_list';
+
+        var id = event.target.getAttribute('data-id');
+
+        const _url = 'Controllers/TodoList.php';
+        let _body = {
+            action,
+            id
+        };
+        const _headers = {
+        'Content-type': 'application/json; charset=UTF-8',
+        };
+        const _options = { method: 'POST', headers: _headers, body: JSON.stringify(_body) };
+        fetch(_url, _options).then((response) => {
+            return response.json();
+        }).then((response) =>{
+            document.getElementById('title').value          = response.data.title;
+            document.getElementById('description').value    = response.data.description;
+            document.getElementById('id').value             = response.data.id;
+            document.getElementById('action').value         = 'update_task';
+        });
+    }));
+
+    
+    var form = document.getElementById("actionListForm");
+
+    form.addEventListener('submit', async(e) => handleForm(e));
+
+    async function handleForm(event) { 
+        event.preventDefault(); 
+
+        document.getElementById('message').innerHTML = '';
+        let erListExist = document.querySelector('.errorList');
+        if(erListExist){
+            erListExist.remove();
+        }
+        
+        if(document.getElementById('action').value == 'update_task'){
+            
+            var update_btn  = document.getElementById('update_btn');
+            update_btn.style.display = 'none';
+            var spinner = document.querySelector('.spinner');
+            spinner.classList.add('loading');
+            let id              =   document.getElementById('id').value;
+            let title           =   document.getElementById('title').value;
+            let desc            =   document.getElementById('description').value;
+            let action          =   document.getElementById('action').value;
+            const _url = 'Controllers/TodoList.php';
+            let _body = {
+                id: id,
+                title: title,
+                desc: desc,
+                action: action,
+            };
+            const _headers = {
+            'Content-type': 'application/json; charset=UTF-8',
+            };
+            const _options = { method: 'POST', headers: _headers, body: JSON.stringify(_body) };
+
+
+            await fetch(_url, _options).then((response) => {
+                return response.json();
+            }).then((res) => {
+                spinner.classList.remove('loading');
+                update_btn.style.display = 'block';
+
+                if(res.status == 'failed'){
+                    var erList = document.createElement("ul");
+                    erList.className = 'errorList';
+                    document.body.appendChild(erList);
+
+                    for (let i = 0; i < res.msg.length; i++) {
+                        var li = document.createElement("li");  
+                        li.innerHTML  = res.msg[i];
+                        erList.appendChild(li);
+                    }
+                    document.getElementById("message").append(erList);
+                }else{
+                    let successEl = document.createElement('p');
+                    successEl.className = 'success';
+                    successEl.textContent = res.msg;
+
+                    var msgEl = document.getElementById("message");
+                    msgEl.appendChild(successEl);
+                    setTimeout(() =>{ 
+                        document.getElementById("message").textContent = '';
+                    }
+                    , 3000);
+                    }
+            });
+
+        }
+    } 
+
+
+    window.onclick = function (event) {
+        if (event.target == editModal) {
+            editModal.style.display = "none";
+            let erListExist = document.querySelector('.errorList');
+            if(erListExist){
+                erListExist.remove();
+            }
+        }
+    }
+
+    span.onclick = function () {
+        editModal.style.display = "none";
+        let erListExist = document.querySelector('.errorList');
+        if(erListExist){
+            erListExist.remove();
+        }
+    }
+</script>
+{% endblock %}

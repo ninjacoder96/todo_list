@@ -72,6 +72,22 @@ td {
     word-wrap: break-word;
 }
 
+/* Cards */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px;
+}
+  
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card_mobile{
+    display:none;
+}
+
 /* Inputs */
 .action-btn {
     display: inline;
@@ -95,7 +111,7 @@ input[type=text] {
     cursor:pointer;
 }
 
-.edit_button {
+.cancel_button{
     background-color: #3F7FBF;
     border: none;
     color: white;
@@ -106,8 +122,19 @@ input[type=text] {
     cursor:pointer;
 }
 
-.delete_button {
-    background-color: #DC143C;
+.edit_button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor:pointer;
+}
+
+.delete_button,.delete_task_btn{
+    background-color: #e74c3c;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -183,6 +210,11 @@ input[type=text] {
     animation-duration: 0.4s
 }
 
+.modal_delete_content{
+    width:40%;
+    text-align: center;
+}
+
 /* Add Animation */
 @-webkit-keyframes animatetop {
     from {
@@ -240,6 +272,22 @@ input[type=text] {
 }
 
 /* MISC */
+.text-red{
+    color:red;
+}
+.text-black{
+    color:black;
+}
+.text-left{
+    text-align: left !important;
+}
+.text-center{
+    text-align: center !important;
+}
+.block-center{
+    display: block;
+    margin:0 auto;
+}
 .success {
     color: #4BB543;
 }
@@ -283,8 +331,51 @@ input[type=text] {
 }
 
 /* Media Queries */
+@media only screen and (max-width: 600px) {
+      /* Styles */
+    .container{
+        word-break: break-word;
+    }
+    .list_table{
+        display:none;
+    }
+    .card_mobile{
+        display: block;
+    }
+    .card{
+        width:100%;
+    }
+    .content{
+        margin-top: 20px;
+    }
+    .card_actions{
+        text-align: center;
+    }
+    .card_actions > span{
+        display: inline-block;
+        margin: 20px auto;
+        vertical-align:middle; 
+    }
+    .card_task_title{
+        font-size: 30px;
+        text-align: center;
+    }
+    .card_task_desc{
+        font-size:16px;
+        text-align: center;
+    }
+    .delete_button,.edit_button{
+        margin-bottom: 5px;
+        word-wrap: break-word;
+    }
+    .modal_delete_content{
+        width:100%;
+    }
+}
+
 
 @media screen and (max-width: 600px) {
+
     table {
         border: 0;
     }

@@ -1,0 +1,69 @@
+{% block scripts %}
+<script>
+    var deleteModal = document.getElementById("deleteModal");
+    var delete_task_btn = document.querySelector(".delete_task_btn");
+    const deleteBtnListener           = document.querySelectorAll('.delete_button');
+    const cancelBtnListener           = document.querySelectorAll('.cancel_button');
+
+    deleteBtnListener.forEach(el => el.addEventListener('click', event => {
+         deleteModal.style.display = "block";
+         
+          var id = event.target.getAttribute('data-id');
+          document.getElementById('task_id').value = id;
+
+    }))
+
+    delete_task_btn.addEventListener('click', event => {
+        event.preventDefault();
+
+
+        let id              = document.getElementById('task_id').value;
+        var action          = 'delete_task';
+
+        var cancelBtn   = document.getElementById('cancel_btn');
+
+        var spinner = document.getElementById('spinner_loader');
+        spinner.classList.add("loading","block-center");
+
+        event.target.style.display = 'none';
+        cancelBtn.style.display = 'none';
+
+        const _url = 'Controllers/TodoList.php';
+
+        let _body = {
+            id: id,
+            action:action
+        };
+
+        const _headers = {
+        'Content-type': 'application/json; charset=UTF-8',
+        };
+
+        const _options = { method: 'POST', headers: _headers, body: JSON.stringify(_body) };
+
+        fetch(_url, _options).then((response) => {
+            return response.json();
+        }).then((res) => {
+            spinner.classList.remove("loading","block-center");
+            deleteModal.style.display = "none";
+
+            let str = window.location.href;
+            let lastSegment = str.replace(/.*\/(\w+)\/?$/, '$1');
+            window.location.href = lastSegment;
+
+            setTimeout(() =>{ 
+                alert(res.msg);
+            },1000);
+        });
+
+    });
+
+    cancelBtnListener.forEach(el => el.addEventListener('click', event => {
+         deleteModal.style.display = "none";
+    }))
+
+
+</script>
+
+
+{% endblock %}

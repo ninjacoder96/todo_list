@@ -8,9 +8,7 @@ namespace Db\Adapter;
 use Db\Config;
 use Db\Adapter\AdapterInterface;
 
-/**
- * MySQLi Pdo
- */
+
 class Pdo implements AdapterInterface
 {
     private $_dbh;
@@ -20,32 +18,44 @@ class Pdo implements AdapterInterface
         
         $this->_dbh = new \PDO("mysql:host={$config->host};dbname={$config->dbname}", $config->user, $config->password);
     }
-    public function fetchAll($sql, $parameters = [])
-    {   
-        $sth = $this->_dbh->prepare($sql);
-        $sth->execute($parameters);
+    public function fetchAll($start,$limit) : array
+    {      
+        $query = "SELECT * FROM tasks order BY ID DESC limit $start,$limit";
+        $sth = $this->_dbh->prepare($query);
+        $sth->execute();
         return $sth->fetchAll();
     }
 
-    public function count($sql){
+    public function count($sql) : string
+    {
         $sth = $this->_dbh->prepare($sql);
         $sth->execute();
         return $sth->fetchColumn();
     }
 
-    public function insert($sql, $parameters = []){
+    public function insert($sql, $parameters = []) : object
+    {
         $sth = $this->_dbh->prepare($sql);
         $sth->execute($parameters);
         return $sth;
     }
 
-    public function find($sql, $parameters = []){
+    public function find($sql, $parameters = []): array
+    {
         $sth = $this->_dbh->prepare($sql);
         $sth->execute($parameters);
         return $sth->fetch();
     }
 
-    public function update($sql,$parameters = []){
+    public function update($sql,$parameters = [])
+    {
+        $sth = $this->_dbh->prepare($sql);
+        $sth->execute($parameters);
+        return $sth;
+    }
+
+    public function delete($sql,$parameters = [])
+    {   
         $sth = $this->_dbh->prepare($sql);
         $sth->execute($parameters);
         return $sth;

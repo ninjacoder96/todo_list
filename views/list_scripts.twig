@@ -1,0 +1,60 @@
+
+
+{% block content  %}
+<!-- Edit Modal -->
+<div id="editModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal_content">
+        <div class="modal_header">
+            <span class="close">&times;</span>
+            <h2 id="modal_header_title">Modal Header</h2>
+        </div>
+        <div class="modal_body">
+            <form method="POST" id="actionListForm">
+                <div class="message" id="message"></div>
+                <label>Title</label>
+                <input type="text" name="title" id="title">
+
+                <label>Description</label>
+                <input type="text" name="title" id="description"/>
+
+                <input type="hidden" name="action" id="action" value=""/>
+                <input type="hidden" name="id" id="id"/>
+                <div class='spinner'></div>
+                <input type="submit" value="" class="button" id="submit_btn"/>
+            </form>
+        </div>
+        <div class="modal_footer">
+            <h3>Modal Footer</h3>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal_content modal_delete_content">
+        <div class="modal_header">
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal_body">
+            <h2>Are you sure?</h2>
+        </div>
+        <div class="modal_footer">
+                <form method="POST" id="deleteForm">
+                <input type="hidden" name="id" id="task_id"/>
+                <div class='spinner' id="spinner_loader"></div>
+                <a class="delete_task_btn" id="delete_task_btn delete_btn">YES</a>
+                <a class="cancel_button" id="cancel_btn">CANCEL</a>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+ {% include 'edit_task_script.twig' %}
+ {% include 'delete_task_script.twig' %}
+{% endblock %}

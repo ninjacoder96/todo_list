@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(["status" => 'success','data' => $sql]);
     }
 
-    if($data["action"] == 'update_list'){
+    if($data["action"] == 'update_task'){
 
         $id = $data["id"];
         $title = (!empty($data["title"])) ? filter_var($data["title"], FILTER_SANITIZE_STRING) : $errors[] = "title is required!";
@@ -78,6 +78,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         echo json_encode(["status" => 'failed', 'msg' => $errors]);
+
+    }
+
+    if($data["action"] == 'delete_task'){
+        $id = $data["id"];
+
+        $sql = $db->delete("DELETE FROM tasks where id = :column1", [
+            'column1' => $id,
+        ]);
+
+        if ($sql) {
+            http_response_code(200);
+            echo json_encode(["status" => 'success', 'msg' => "Successfully Deleted"]);
+            exit;
+        }
+    
 
 
 
