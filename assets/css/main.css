@@ -457,4 +457,9 @@ input[type=text] {
     .pagination {
         margin-top: 20px;
     }
+
+    .fixed-footer{
+        position: relative;
+        margin-top: 25%;
+    }
 }
